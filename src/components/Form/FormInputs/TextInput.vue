@@ -15,9 +15,7 @@
         :id="id"
         :class="inputClass"
         :placeholder="placeholder"
-        :style="validation_failed ? 'border-width: thin' : ''"
       />
-        <!-- class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" -->
       <div
         v-if="trailing_icon"
         class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
@@ -82,7 +80,7 @@ export default {
         inputClass += ' pr-10'
       }
       if (this.validation_failed) {
-        inputClass += ' border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500'
+        inputClass += ' border border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500'
       } else {
         inputClass += ' shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300'
       }

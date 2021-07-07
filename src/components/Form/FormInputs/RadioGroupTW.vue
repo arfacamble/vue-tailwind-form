@@ -1,6 +1,6 @@
 <!-- I feel like this might be easier done ourselves - but I defer to those with more vue expertise -->
 <template>
-  <RadioGroup v-model="selected">
+  <RadioGroup v-model="selected" class="mt-3">
     <RadioGroupLabel class="sr-only">
       Server size
     </RadioGroupLabel>

@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen w-full">
-    <div class="container mx-auto flex flex-wrap">
+    <div class="container mx-auto flex flex-wrap pt-3">
       <TextInput
         v-for="input in inputs"
         :key="input.id"
