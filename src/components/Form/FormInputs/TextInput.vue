@@ -8,14 +8,14 @@
 -->
 
 <template>
-  <div class="max-w-md min-w-sm mx-auto my-2">
+  <div class="w-full md:w-2/4 mx-auto p-4">
     <label :for="input_purpose" :class="labelClass">{{input_purpose}}</label>
     <div :class="label_display ? 'mt-1' : ''">
       <input
         type="text"
         :name="input_purpose"
         :id="input_purpose"
-        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+        class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
         :placeholder="placeholder"
       />
     </div>

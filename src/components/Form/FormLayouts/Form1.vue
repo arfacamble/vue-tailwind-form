@@ -30,7 +30,7 @@
           { name: 'Phone Number', id: 'phoneNumber', placeholder: '07770 70 70 70', label: true},
           { name: 'House Number', id: 'houseNumber', placeholder: '1', label: true},
           { name: 'First Name', id: 'postcode', placeholder: 'CA20 1EU', label: true},
-          { name: 'First Name', id: 'address', placeholder: 'Forge Cottage, Greendale, Cumbria', label: true}
+          { name: 'Address', id: 'address', placeholder: 'Forge Cottage, Greendale, Cumbria', label: true}
         ]
       }
     }
