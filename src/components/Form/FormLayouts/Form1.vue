@@ -21,18 +21,25 @@
       :options="dropdown.options"
       @update-select="updateFormData"
     />
+    <Button
+      :text="'Submit'"
+      :larger="true"
+      @button-click="submitForm"
+    />
   </div>
 </template>
 
 <script>
   import TextInput from '../FormInputs/TextInput'
   import SelectDropdown from '../FormInputs/SelectDropdown'
+  import Button from '../FormInputs/Button'
   import { ExclamationCircleIcon, QuestionMarkCircleIcon, MailIcon } from '@heroicons/vue/solid'
 
   export default {
     components: {
       TextInput,
-      SelectDropdown
+      SelectDropdown,
+      Button
     },
 
     data () {
@@ -65,6 +72,9 @@
         const id = payload[0]
         const text = payload[1]
         this.formData[id] = text
+      },
+      submitForm () {
+        console.log(this.formData)
       }
     }
   }
