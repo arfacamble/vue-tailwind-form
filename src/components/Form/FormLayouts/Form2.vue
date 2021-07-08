@@ -1,19 +1,75 @@
 <template>
-  <div class="h-screen w-full">
-    <div class="container mx-auto flex-flex-wrap pt-3">
-      <RadioGroup
-        :question="'What\'s the floor like?'"
-      />
-    </div>
+  <div class="container mx-auto pt-3">
+    <RadioGroup
+      :question="firstQuestion"
+      :options="optionsWithIcons"
+      @set-active="setActive"
+    />
+    <TextInput
+      v-if="optionsWithIcons.other.active"
+      :input_purpose="moreInfoIfOther.input_purpose"
+      :id="moreInfoIfOther.id"
+      :placeholder="moreInfoIfOther.placeholder"
+      :full_width="moreInfoIfOther.full_width"
+    />
+    <DragAndDrop
+      :hint="'Show us PLEASE'"
+    />
+    <RadioGroup
+      :question="secondQuestion"
+      :options="optionsNoIcons"
+      @set-active="setActive"
+    />
   </div>
 </template>
 
 <script>
 import RadioGroup from './RadioGroup'
+import TextInput from '../FormInputs/TextInput'
+import DragAndDrop from '../FormInputs/DragAndDrop'
+import { CalendarIcon, BriefcaseIcon, CogIcon, CursorClickIcon } from '@heroicons/vue/outline'
 
 export default {
   components: {
     RadioGroup,
+    TextInput,
+    DragAndDrop
+  },
+
+  data () {
+    return {
+      firstQuestion: 'What\'s the floor like?',
+      optionsWithIcons: {
+        door: { id: 'door', label: 'By the Front Door', icon: CalendarIcon, active: false },
+        wall: { id: 'wall', label: 'On an External Wall', icon: BriefcaseIcon, active: false },
+        stairs: { id: 'stairs', label: 'Under the Stairs', icon: CogIcon, active: false },
+        other: { id: 'other', label: 'Somewhere else', icon: CursorClickIcon, active: false }
+      },
+      moreInfoIfOther: {
+        input_purpose: 'Tell us where you want the damn thing then',
+        id: 'moreInfo',
+        placeholder: 'Tell us more...',
+        full_width: true,
+        value: ''
+      },
+      secondQuestion: 'Will we find bodies when installing your device?',
+      optionsNoIcons: {
+        yes: { id: 'yes', label: 'Yes', active: false },
+        no: { id: 'no', label: 'No', active: false },
+        loads: { id: 'loads', label: 'Loads!!', active: false },
+        onlyAnimals: { id: 'onlyAnimals', label: 'Only Animals', active: false }
+      }
+    }
+  },
+
+  methods: {
+    setActive (event) {
+      const optionClicked = event.id
+      const dataPossibilities = Object.keys(this.$data)
+      const dataKey = dataPossibilities.find(key => Object.prototype.hasOwnProperty.call(this[key], optionClicked))
+      Object.keys(this[dataKey]).forEach(option => this[dataKey][option].active = false)
+      this[dataKey][optionClicked].active = true
+    }
   }
 }
 </script>
