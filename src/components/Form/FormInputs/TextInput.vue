@@ -6,11 +6,16 @@
         v-if="leading_icon"
         class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
       >
-        <slot></slot>
+        <component
+         :is="icon"
+         class="h-5 w-5 text-gray-400"
+         aria-hidden="true"
+        />
       </div>
       <input
         type="text"
         v-model="text"
+        @keyup="updateFormData"
         :name="input_purpose"
         :id="id"
         :class="inputClass"
@@ -20,7 +25,11 @@
         v-if="trailing_icon"
         class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
       >
-        <slot></slot>
+        <component
+          :is="icon"
+          :class="[validation_failed ? 'text-red-500' : 'text-gray-400', 'h-5 w-5']"
+          aria-hidden="true"
+        />
       </div>
     </div>
   </div>
@@ -60,10 +69,14 @@ export default {
     validation_failed: {
       default: false,
       type: Boolean
+    },
+    icon: {
+      type: undefined
     }
     // another prop for color given focus classes?
     // or hardcoded our own color as consistent across app?
   },
+
   computed: {
     labelClass () {
       return (this.label_display ? "block text-sm font-medium text-gray-700" : "sr-only")
@@ -91,6 +104,12 @@ export default {
   data () {
     return {
       text: ''
+    }
+  },
+
+  methods: {
+    updateFormData () {
+      this.$emit('update-text', [this.id, this.text])
     }
   }
 }

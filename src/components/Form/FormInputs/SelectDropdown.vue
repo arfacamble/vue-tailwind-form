@@ -4,6 +4,8 @@
     <select
       :id="input_purpose"
       :name="input_purpose"
+      v-model="selectedOption"
+      @change="updateFormData"
       class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm"
     >
       <option disabled selected hidden>Select Material...</option>
@@ -25,14 +27,25 @@ export default {
       required: true,
       type: String
     },
+    id: {
+      required: true,
+      type: String
+    },
     options: {
       required: true,
       type: Array
     }
   },
+
   data () {
     return {
-      selected_option: null
+      selectedOption: 'Select Material...'
+    }
+  },
+
+  methods: {
+    updateFormData () {
+      this.$emit('update-select', [this.id, this.selectedOption])
     }
   }
 }
