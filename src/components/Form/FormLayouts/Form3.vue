@@ -12,7 +12,7 @@
 
 <script>
   import { MailIcon } from '@heroicons/vue/solid'
-  import Button from '../FormInputs/Button'
+  import Button from '../General/Button'
 
   export default {
     components: {

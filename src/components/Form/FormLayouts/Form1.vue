@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto flex flex-wrap pt-3">
+  <div class="container mx-auto flex flex-wrap">
     <TextInput
       v-for="input in inputs"
       @update-text="updateFormData"
@@ -32,7 +32,7 @@
 <script>
   import TextInput from '../FormInputs/TextInput'
   import SelectDropdown from '../FormInputs/SelectDropdown'
-  import Button from '../FormInputs/Button'
+  import Button from '../General/Button'
   import { ExclamationCircleIcon, QuestionMarkCircleIcon, MailIcon } from '@heroicons/vue/solid'
 
   export default {

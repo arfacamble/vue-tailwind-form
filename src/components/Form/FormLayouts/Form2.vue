@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto pt-3">
+  <div class="container mx-auto">
     <RadioGroup
       :question="firstQuestion"
       :options="optionsWithIcons"
