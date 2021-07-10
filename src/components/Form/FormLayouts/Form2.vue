@@ -15,6 +15,24 @@
     <DragAndDrop
       :hint="'Show us PLEASE'"
     />
+    <div class="flex flex-col items-center py-8">
+      <Slider
+        :min="0"
+        :max="10"
+        :value="5"
+        :id="'sliderNumber'"
+        :question="'How large is the number you want to tell us about?'"
+        @update-value="updateFormData"
+      />
+      <br>
+      <Slider
+        :min="0"
+        :max="100"
+        :value="50"
+        :id="'slider2'"
+        @update-value="updateFormData"
+      />
+    </div>
     <RadioGroup
       :question="secondQuestion"
       :options="optionsNoIcons"
@@ -27,13 +45,15 @@
 import RadioGroup from './RadioGroup'
 import TextInput from '../FormInputs/TextInput'
 import DragAndDrop from '../FormInputs/DragAndDrop'
+import Slider from '../FormInputs/Slider'
 import { CalendarIcon, BriefcaseIcon, CogIcon, CursorClickIcon } from '@heroicons/vue/outline'
 
 export default {
   components: {
     RadioGroup,
     TextInput,
-    DragAndDrop
+    DragAndDrop,
+    Slider
   },
 
   data () {
@@ -69,6 +89,11 @@ export default {
       const dataKey = dataPossibilities.find(key => Object.prototype.hasOwnProperty.call(this[key], optionClicked))
       Object.keys(this[dataKey]).forEach(option => this[dataKey][option].active = false)
       this[dataKey][optionClicked].active = true
+    },
+    updateFormData (payload) {
+      const id = payload[0]
+      const value = payload[1]
+      console.log(`id: ${id}, value: ${value}`)
     }
   }
 }
