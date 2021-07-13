@@ -32,6 +32,9 @@
         <Form4
           v-if="selectedTab === 'calendar'"
         />
+        <Form5
+          v-if="selectedTab === 'documents'"
+        />
       </div>
     </div>
   </div>
@@ -44,6 +47,7 @@
   import Form2 from '../Form/FormLayouts/Form2';
   import Form3 from '../Form/FormLayouts/Form3';
   import Form4 from '../Form/FormLayouts/Form4';
+  import Form5 from '../Form/FormLayouts/Form5';
 
   export default {
     components: {
@@ -52,7 +56,8 @@
       Form1,
       Form2,
       Form3,
-      Form4
+      Form4,
+      Form5
     },
 
     methods: {
