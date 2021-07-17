@@ -33,7 +33,7 @@ export default {
 
   methods: {
     setActive () {
-      this.$emit('set-active', this)
+      this.$emit('set-active', this.id)
     }
   }
 }

@@ -4,9 +4,8 @@
     <a
       v-for="tab in tabs"
       :key="tab.id"
-      href=""
       :data-id="tab.id"
-      :class="[tab.current ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'flex items-center pl-3 pr-2 py-2 text-sm font-medium rounded-md']"
+      :class="[tab.current ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'flex items-center pl-3 pr-2 py-2 text-sm font-medium rounded-md cursor-pointer']"
       :aria-current="tab.current ? 'page' : undefined"
       @click.prevent="setActiveTab"
     >
@@ -17,7 +16,7 @@
         class="mr-3"
       />
       <span class="truncate flex-grow sr-only md:not-sr-only">
-        {{ tab.name }}
+        {{ tab.title }}
       </span>
     </a>
   </nav>
@@ -31,27 +30,16 @@
       NavIcon
     },
 
-    data () {
-      return {
-        tabs: [
-          { order: 1, id: 'installationDetails', name: 'Installation Details', href: '#', current: false, complete: true },
-          { order: 2, id: 'grantInformation', name: 'Grant Information', href: '#', current: false, complete: true },
-          { order: 3, id: 'projects', name: 'Projects', href: '#', current: true, complete: false },
-          { order: 4, id: 'calendar', name: 'Calendar', href: '#', current: false, complete: false },
-          { order: 5, id: 'documents', name: 'Documents', href: '#', current: false, complete: false },
-          { order: 6, id: 'reports', name: 'Reports', href: '#', current: false, complete: false },
-        ]
+    props: {
+      tabs: {
+        required: true,
+        type: Object
       }
     },
 
     methods: {
       setActiveTab (event) {
-        this.tabs.forEach(tab => tab.current = false)
-        const tabSelected = this.tabs.find(tab => tab.id === event.currentTarget.dataset.id)
-        const tabIndex = this.tabs.findIndex(tab => tab === tabSelected)
-        tabSelected.current = true
-        this.tabs.tabIndex = tabSelected
-        this.$emit('select-tab', tabSelected)
+        this.$emit('select-tab', event.currentTarget.dataset.id)
       }
     }
   }

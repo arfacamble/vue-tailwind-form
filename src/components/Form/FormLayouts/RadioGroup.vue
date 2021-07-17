@@ -31,12 +31,16 @@ export default {
     options: {
       required: true,
       type: Object
+    },
+    id: {
+      required: true,
+      type: String
     }
   },
 
   methods: {
-    setActive (event) {
-      this.$emit('set-active', event)
+    setActive (optionId) {
+      this.$emit('set-active', { inputId: this.id, active: optionId })
     }
   }
 }

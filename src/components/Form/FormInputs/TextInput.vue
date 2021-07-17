@@ -1,5 +1,5 @@
 <template>
-  <div :class="containerClass">
+  <div>
     <label :for="input_purpose" :class="labelClass">{{input_purpose}}</label>
     <div :class="label_display ? 'mt-1 relative rounded-md shadow-sm' : ''">
       <div
@@ -17,7 +17,6 @@
         v-model="text"
         @keyup="updateFormData"
         :name="input_purpose"
-        :id="id"
         :class="inputClass"
         :placeholder="placeholder"
       />
@@ -81,9 +80,6 @@ export default {
     labelClass () {
       return (this.label_display ? "block text-sm font-medium text-gray-700" : "sr-only")
     },
-    containerClass () {
-      return this.full_width ? 'w-full mx-auto p-4' : 'w-full mx-auto p-4 md:w-2/4'
-    },
     inputClass () {
       let inputClass = 'block w-full p-2 sm:text-sm rounded-md'
       if (this.leading_icon) {
@@ -109,7 +105,7 @@ export default {
 
   methods: {
     updateFormData () {
-      this.$emit('update-text', [this.id, this.text])
+      this.$emit('update-text', { inputId: this.id, value: this.text })
     }
   }
 }

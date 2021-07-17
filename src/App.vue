@@ -1,14 +1,14 @@
 <template>
-  <Form />
+  <FormMaster />
 </template>
 
 <script>
-import Form from './components/Layouts/Form.vue'
+import FormMaster from './components/Layouts/FormMaster.vue'
 
 export default {
   name: 'App',
   components: {
-    Form
+    FormMaster
   }
 }
 </script>
