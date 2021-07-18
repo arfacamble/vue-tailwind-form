@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <label :for="input_purpose" :class="labelClass">{{input_purpose}}</label>
     <div :class="label_display ? 'mt-1 relative rounded-md shadow-sm' : ''">
       <div

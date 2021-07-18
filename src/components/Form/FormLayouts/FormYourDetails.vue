@@ -1,10 +1,10 @@
 <template>
-  <div class="h-full w-full px-12 pt-8 flex flex-col">
-    <h1 class="text-3xl">Your Details</h1>
-    <div class="border flex-1 p-8">
+  <div class="h-full w-full px-2 md:px-8 pt-2 md:pt-8 flex flex-col">
+    <h1 class="text-3xl md:ml-8">Your Details</h1>
+    <div class="flex-1 md:p-2">
       <!-- <FormYourDetails1 @update-form-data="updateResults" /> -->
-      <QuestionsRender v-if="currentStep === 1" :formId="'yd1'" :questions="formData.yd1" @update-form-data="updateFormData"/>
-      <QuestionsRender v-if="currentStep === 2" :formId="'yd2'" :questions="formData.yd2" @update-radio-active="updateRadioActive"/>
+      <QuestionsRender v-if="currentStep === 1" :formId="'yd1'" :questions="formData.yd1" @update-form-data="updateFormData" />
+      <QuestionsRender v-if="currentStep === 2" :formId="'yd2'" :questions="formData.yd2" @update-radio-active="updateRadioActive" @update-radio-more-info="updateRadioMoreInfo" />
     </div>
     <ProgressBar :steps="steps" />
     <BackAndNext :displayNext="true" :displayBack="true" @navigate="changeStep"/>
@@ -51,8 +51,15 @@
                 door: { id: 'door', label: 'By the Front Door', icon: CalendarIcon, active: false },
                 wall: { id: 'wall', label: 'On an External Wall', icon: BriefcaseIcon, active: false },
                 stairs: { id: 'stairs', label: 'Under the Stairs', icon: CogIcon, active: false },
-                other: { id: 'other', label: 'Somewhere else', icon: CursorClickIcon, active: false }
-              }
+                other: { id: 'other', label: 'Somewhere else', icon: CursorClickIcon, active: false, require_more_info: true }
+              },
+              more_info_input_purpose: 'Please tell us more',
+              more_info_id: 'fuseBoardMoreInfo',
+              more_info_placeholder: 'My fusebox is ...',
+              more_info_value: ''
+            },
+            fuseBoardPhoto: {
+              component: 'dragAndDrop', id: 'fuseBoardPhoto', hint: 'Photo (optional)'
             }
           }
         }
@@ -79,6 +86,13 @@
           this.formData[formId][inputId].options[key].active = false
         })
         this.formData[formId][inputId].options[payload.setActive].active = true
+        this.formData[formId][inputId].value = inputId
+      },
+      updateRadioMoreInfo (payload) {
+        const formId = payload.formId
+        const inputId = payload.inputId
+        const value = payload.value
+        this.formData[formId][inputId].more_info_value = value
       },
       sendResults () {
         const results = {}
