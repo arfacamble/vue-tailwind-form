@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import RadioOption from '../FormInputs/RadioOption'
+import RadioOption from './RadioOption'
 import TextInput from '../FormInputs/TextInput'
 
 export default {

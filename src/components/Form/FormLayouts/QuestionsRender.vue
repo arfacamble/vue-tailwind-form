@@ -39,7 +39,7 @@
 <script>
   import TextInput from '../FormInputs/TextInput'
   import DragAndDrop from '../FormInputs/DragAndDrop'
-  import RadioGroup from './RadioGroup'
+  import RadioGroup from '../FormInputs/RadioGroup'
 
   export default {
     components: {

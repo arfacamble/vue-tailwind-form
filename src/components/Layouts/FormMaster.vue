@@ -6,8 +6,8 @@
         alt="electron logo"
       >
     </div>
-    <div class="flex h-screen p-2 pt-0 md:pt-2">
-      <div class="h-screen">
+    <div class="flex h-5/6 md:h-screen p-2 pt-0 md:pt-2">
+      <div class="h-full">
         <img
           class="sr-only md:not-sr-only md:w-56"
           src="../../assets/electron-logo-light.png"
@@ -18,7 +18,7 @@
           @select-tab="selectTab"
         />
       </div>
-      <div class="h-screen w-full">
+      <div class="h-full w-full">
         <FormYourDetails v-if="selectedTab === 'yourDetails'" />
         <Form2 v-if="selectedTab === 'grantInformation'" />
         <Form3 v-if="selectedTab === 'propertyDetails'" />
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import FormNav2 from '../Form/FormLayouts/FormNav2';
+  import FormNav2 from '../Form/General/FormNav2';
   import FormYourDetails from '../Form/FormLayouts/FormYourDetails';
   import Form2 from '../Form/FormLayouts/Form2';
   import Form3 from '../Form/FormLayouts/Form3';

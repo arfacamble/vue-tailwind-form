@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import RadioGroup from './RadioGroup'
+import RadioGroup from '../FormInputs/RadioGroup'
 import TextInput from '../FormInputs/TextInput'
 import DragAndDrop from '../FormInputs/DragAndDrop'
 import Slider from '../FormInputs/Slider'
